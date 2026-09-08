@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>პროექტები — ALCOM</title>
+  <meta name="description" content="ALCOM-ის მიმდინარე და დასრულებული პროექტები.">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="section">
+    <div class="wrap">
+      <h1>პროექტები</h1>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="current">მიმდინარე</button>
+        <button role="tab" aria-selected="false" data-tab="done">დასრულებული</button>
+      </div>
+
+      <!-- პროექტების დამატება: დააკოპირეთ <article> ბლოკი და შეცვალეთ სურათი/სათაური -->
+      <div class="project-grid" id="tab-current">
+        <article><figure><img src="assets/img/projects/current-1.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>თბილისი · საფასადე სისტემა</p></article>
+        <article><figure><img src="assets/img/projects/current-2.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>ბათუმი · ალუმინის კარ-ფანჯარა</p></article>
+        <article><figure><img src="assets/img/projects/current-3.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>თბილისი · პერგოლა</p></article>
+      </div>
+      <div class="project-grid" id="tab-done" hidden>
+        <article><figure><img src="assets/img/projects/done-1.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>თბილისი · ვენტილირებადი ფასადი</p></article>
+        <article><figure><img src="assets/img/projects/done-2.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>ქუთაისი · ავტომატური კარი</p></article>
+        <article><figure><img src="assets/img/projects/done-3.jpg" alt="" onerror="this.onerror=null;this.src='assets/img/placeholder.svg';this.classList.add('is-placeholder')"></figure><h3>პროექტის დასახელება</h3><p>თბილისი · საოფისე ტიხრები</p></article>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.querySelectorAll('.tabs [role=tab]').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.tabs [role=tab]').forEach(x => x.setAttribute('aria-selected', x === b));
+      document.getElementById('tab-current').hidden = b.dataset.tab !== 'current';
+      document.getElementById('tab-done').hidden = b.dataset.tab !== 'done';
+    }));
+  </script>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

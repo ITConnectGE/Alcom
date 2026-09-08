@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>კონტაქტი — ALCOM</title>
+  <meta name="description" content="ALCOM — მისამართი, ტელეფონი, ელ.ფოსტა და საკონტაქტო ფორმა.">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="section">
+    <div class="wrap">
+      <h1>კონტაქტი</h1>
+      <div class="contact-split" style="margin-top: 32px">
+        <div>
+          <ul class="contact-list">
+            <li><small>მისამართი</small>პეტრე სარაჯიშვილის ქუჩა 13, თბილისი</li>
+            <li><small>ტელეფონი</small><a href="tel:+995322110072">(+995 032) 2 11 00 72</a></li>
+            <li><small>მობილური</small><a href="tel:+995599198382">(+995) 599 19 83 82</a></li>
+            <li><small>ელ.ფოსტა</small><a href="mailto:info@alcom.ge">info@alcom.ge</a></li>
+          </ul>
+          <iframe class="map" title="რუკა" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%E1%83%9E%E1%83%94%E1%83%A2%E1%83%A0%E1%83%94+%E1%83%A1%E1%83%90%E1%83%A0%E1%83%90%E1%83%AF%E1%83%98%E1%83%A8%E1%83%95%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1+13+%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98&output=embed"></iframe>
+        </div>
+        <div>
+          <h2>მოგვწერეთ</h2>
+          <form id="contact-form">
+            <label for="name">სახელი</label>
+            <input id="name" name="name" required>
+            <label for="phone">ტელეფონი</label>
+            <input id="phone" name="phone" type="tel" required>
+            <label for="message">შეტყობინება</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            <button class="btn" type="submit">გაგზავნა</button>
+            <p class="form-note" style="margin-top: 12px"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
