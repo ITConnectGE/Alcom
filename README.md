@@ -1,57 +1,29 @@
-# ALCOM — კომპანიის საიტი
+# ALCOM — სტატიკური საიტი
 
-სტატიკური საიტი (HTML/CSS/JS), CMS-ის გარეშე. ჰოსტინგისთვის საკმარისია GitHub Pages.
+`https://alcom.ge`-ის სტატიკური ასლი, გამზადებული GitHub Pages-ისთვის.
 
-## სტრუქტურა
+## რა არის აქ
 
-```
-index.html        მთავარი
-products.html     ყველა პროდუქტი
-product.html      ერთი პროდუქტი (product.html?p=pergola)
-about.html        ჩვენ შესახებ
-projects.html     მიმდინარე / დასრულებული პროექტები
-video.html        ვიდეო გალერეა
-contact.html      კონტაქტი + ფორმა + რუკა
-assets/css/style.css
-assets/js/products.js   ← პროდუქტების სია და ტექსტები (რედაქტირება აქ)
-assets/js/main.js       ← მენიუ, footer, პროდუქტების გამოტანა
-assets/img/             ← სურათები
-```
-
-## რა უნდა ჩასვათ
-
-| ფაილი | რა არის |
+| ბილიკი | შიგთავსი |
 |---|---|
-| `assets/img/logo.png` | ლოგო (~48px სიმაღლე). სანამ არ არის, ტექსტური "ALCOM" ჩანს |
-| `assets/img/favicon.png` | ბრაუზერის ხატულა |
-| `assets/img/about.jpg` | ფოტო "ჩვენ შესახებ" ბლოკისთვის |
-| `assets/img/products/<slug>.jpg` | პროდუქტის ფოტო, მაგ. `pergola.jpg` (slug-ები `products.js`-შია) |
-| `assets/img/projects/current-1.jpg` ... | პროექტების ფოტოები |
+| `index.html`, `ka/`, `en/` | გვერდები (ქართული ვერსია იგივეა root-ზეც და `/ka/`-შიც, როგორც ორიგინალზე) |
+| `media/` | სტატიების და გალერეების სურათები |
+| `_cdn/` | თემის CSS/JS/ფონტები/აიქონები (ორიგინალზე `cdn.gweb.ge`-დან იტვირთებოდა) |
+| `templates/`, `includes/`, `buffer/` | თემის დამატებითი ასეტები |
+| `.nojekyll` | GitHub Pages-ს ეუბნება, რომ Jekyll-ით არ დაამუშაოს (საჭიროა `_cdn/`-ის გამო) |
 
-სურათი რომ არ იყოს, ავტომატურად ნაცრისფერი ჩარჩო გამოჩნდება — საიტი არ იშლება.
+გვერდები დირექტორიის სახითაა (`ka/contact/index.html`), ამიტომ URL-ები ორიგინალის
+იდენტურია: `/ka/contact/`, `/ka/produqtebi/pergola/` და ა.შ.
+ყველა შიდა ბმული ფარდობითია, ამიტომ საიტი მუშაობს როგორც
+`itconnectge.github.io/Alcom/`-ზე, ისე საკუთარ დომენზე.
 
-- **პროდუქტის ტექსტის შეცვლა / დამატება:** `assets/js/products.js`
-- **ვიდეო:** `video.html`-ში `VIDEO_ID` შეცვალეთ YouTube-ის ID-ით
-- **ტელეფონი/მისამართი:** `assets/js/main.js` ზედა `SITE` ობიექტში და `contact.html`-ში
-- **ფორმა:** ამჟამად mailto-ს ხსნის. სერვერული გაგზავნისთვის ჩართეთ [Formspree](https://formspree.io) — `<form action="https://formspree.io/f/XXXX" method="POST">`
+## რით განსხვავდება ორიგინალისგან
 
-## GitHub-ზე ატვირთვა
-
-1. GitHub-ზე შექმენით ახალი რეპოზიტორია, მაგ. `alcom-site` (ცარიელი, README-ს გარეშე).
-2. ტერმინალში ამ საქაღალდეში:
-
-```bash
-git init
-git add .
-git commit -m "ALCOM საიტი"
-git branch -M main
-git remote add origin https://github.com/<თქვენი-username>/alcom-site.git
-git push -u origin main
-```
-
-## GitHub Pages-ზე გაშვება
-
-რეპოზიტორია → **Settings → Pages → Source: Deploy from a branch → main / (root) → Save**.
-რამდენიმე წუთში საიტი იქნება `https://<username>.github.io/alcom-site/`.
-
-საკუთარი დომენისთვის (alcom.ge): Pages-ის პარამეტრებში ჩაწერეთ **Custom domain**, ხოლო DNS-ში დაამატეთ CNAME `www → <username>.github.io` და A ჩანაწერები GitHub-ის IP-ებზე (185.199.108.153, .109.153, .110.153, .111.153).
+* **საკონტაქტო ფორმა მოხსნილია** — PHP-ს საჭიროებდა და სტატიკურ ჰოსტინგზე ვერ იმუშავებდა.
+  `/contact/`-ზე დარჩა მისამართი, ტელეფონები და ელ.ფოსტა.
+* **სურათები შეკუმშულია** JPEG q82-ზე (703 MB → 178 MB). ზომა და კადრი უცვლელია.
+* **ძებნის ფორმა** (header-ის ლუპა) ისევ `alcom.ge`-ზე გზავნის მოთხოვნას — სტატიკურ
+  ჰოსტინგზე ძებნა ვერ იმუშავებს. დომენის გადმოტანამდე უნდა მოიხსნას ან შეიცვალოს.
+* **გვერდების დაყოფა** (`?start=12`) ახლა `@start=12` სახითაა, რადგან სტატიკური
+  ჰოსტინგი query string-ს არ ამუშავებს.
+* Google Maps კონტაქტის გვერდზე ისევე ცარიელია, როგორც ორიგინალზე (API key არ არის).
