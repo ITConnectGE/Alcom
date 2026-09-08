@@ -17,8 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../_cdn/buffer/1003953/css/0942b9837a9b9949ba449914660c56e1_alcom_default.css" type="text/css" />
 
-<link rel="stylesheet" href="../../assets/leaflet/leaflet.css" />
-<style>.alcom-pin{cursor:pointer}</style>
 </head>
 
     <body class="nosliderbody">
@@ -312,42 +310,135 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-  <script src="../../assets/leaflet/leaflet.js"></script>
   <script type="text/javascript"><!--
 
-            // OpenStreetMap (Leaflet) - replaces the Google Maps embed
-            (function () {
-              function alcomInitMap() {
-                var el = document.getElementById('map-canvas');
-                if (!el || typeof L === 'undefined') return;
-                var here = [41.7594404, 44.7591153];
-                var map = L.map(el, { scrollWheelZoom: false }).setView(here, 16);
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                  maxZoom: 19,
-                  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-                var pin = L.marker(here, {
-                  title: 'ALCOM — Google Maps-ზე გახსნა',
-                  alt: 'ALCOM — Google Maps-ზე გახსნა',
-                  riseOnHover: true,
-                  icon: L.icon({
-                    iconUrl: '../../modules/mod_contact/assets/location_map_icon.png',
-                    iconSize: [40, 40],
-                    iconAnchor: [20, 40],
-                    className: 'alcom-pin'
-                  })
-                }).addTo(map);
-                pin.on('click', function () {
-                  window.open('https://www.google.com/maps/search/?api=1&query=' + here[0] + ',' + here[1],
-                              '_blank', 'noopener');
-                });
-              }
-              if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', alcomInitMap);
-              } else {
-                alcomInitMap();
-              }
-            })();
+            var saqartvelo = new google.maps.LatLng("41.6716601","44.7224726"); 
+                    
+            
+
+            var markers = [];
+            var iterator = 0;
+            var styles;
+            var map;
+            var mapOptions;
+            var image = 'https://alcom.ge/modules/mod_contact/assets/location_map_icon.png' ;
+
+
+            function initialize() {
+
+            //
+            var styles = [
+                {
+                  stylers: [
+                    { hue: "#ccc" },
+                    { saturation: -100 }
+                  ]
+                },{
+                  featureType: "road",
+                  elementType: "geometry",
+                  stylers: [
+                    { lightness: 100 },
+                    { visibility: "simplified" }
+                  ]
+                },{
+                  featureType: "road",
+                  elementType: "labels",
+                  stylers: [
+                    { visibility: "on" }
+                  ]
+                }
+              ];
+
+              var styledMap = new google.maps.StyledMapType(styles,{name: "GW"});
+            //
+            var mapOptions = {
+                zoom: 9,
+                center: saqartvelo,
+                     mapTypeControlOptions: {
+                  mapTypeIds: [google.maps.MapTypeId.SATELLITE,google.maps.MapTypeId.HYBRID,google.maps.MapTypeId.TERRAIN,google.maps.MapTypeId.ROADMAP,"map_style"]
+                }
+              };
+
+              map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+              map.mapTypes.set('map_style', styledMap);
+                   
+              map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                    
+                    
+             //------------------------------- new cords
+                              var k = new google.maps.LatLng("41.6716601","44.7224726");
+                              var kmarker = new google.maps.Marker({ position:k,icon: image});
+                              var ktit = new google.maps.InfoWindow({
+                                  content: '<h3></h3><h5 style="display:none" ></h5><a style="display:none" target="_blank" href="https://www.google.com/maps/dir/Current+Location/41.6716601,44.7224726">Get Directions</a>'
+                                      });
+                              kmarker.addListener("click", function() {
+                             ktit1.close(); 
+                             ktit2.close(); 
+                             ktit3.close(); 
+                             ktit4.close(); 
+                             ktit.open(map, kmarker);
+                    
+                                      });
+                              kmarker.setMap(map);
+                    //------------------------------- new cords
+                              var k1 = new google.maps.LatLng("","");
+                              var kmarker1 = new google.maps.Marker({ position:k1,icon: image});
+                              var ktit1 = new google.maps.InfoWindow({content: '<h3></h3><h5 style="display:none" ></h5><a style="display:none" target="_blank" href="https://www.google.com/maps/dir/Current+Location/,">Get Directions</a>'});
+                              kmarker1.addListener("click", function() {
+                              ktit.close(); 
+                             ktit2.close(); 
+                             ktit3.close(); 
+                             ktit4.close(); 
+                                  ktit1.open(map, kmarker1);
+                                      });
+                                kmarker1.setMap(map);
+                    //------------------------------- new cords
+                              var k2 = new google.maps.LatLng("","");
+                              var kmarker2 = new google.maps.Marker({ position:k2,icon: image});
+                    var ktit2 = new google.maps.InfoWindow({content: '<h3></h3><h5 style="display:none" ></h5><a style="display:none" target="_blank" href="https://www.google.com/maps/dir/Current+Location/,">Get Directions</a>'});
+                              kmarker2.addListener("click", function() {
+                             ktit1.close(); 
+                             ktit.close(); 
+                             ktit3.close(); 
+                             ktit4.close(); 
+                                  ktit2.open(map, kmarker2);
+                                      });
+                                kmarker2.setMap(map);
+                    //------------------------------- new cords
+                              var k3 = new google.maps.LatLng("","");
+                              var kmarker3 = new google.maps.Marker({ position:k3,icon: image});
+                    var ktit3 = new google.maps.InfoWindow({content: '<h3></h3><h5 style="display:none" ></h5><a style="display:none" target="_blank" href="https://www.google.com/maps/dir/Current+Location/,">Get Directions</a>'});
+                              kmarker3.addListener("click", function() {
+                              ktit1.close(); 
+                             ktit2.close(); 
+                             ktit.close(); 
+                             ktit4.close(); 
+                                  ktit3.open(map, kmarker3);
+                                      });
+                                kmarker3.setMap(map);
+                    //------------------------------- new cords
+                              var k4 = new google.maps.LatLng("","");
+                              var kmarker4 = new google.maps.Marker({ position:k4,icon: image});
+                    var ktit4 = new google.maps.InfoWindow({content: '<h3></h3><h5 style="display:none" ></h5><a style="display:none" target="_blank" href="https://www.google.com/maps/dir/Current+Location/,">Get Directions</a>'});
+                              kmarker4.addListener("click", function() {
+                    ktit1.close(); 
+                             ktit2.close(); 
+                             ktit3.close(); 
+                             ktit.close(); 
+                                  ktit4.open(map, kmarker4);
+                                      });
+                                kmarker4.setMap(map);
+                 
+                     google.maps.event.addListener(map, "click", function (e) { 
+                    // k = new google.maps.LatLng(e.latLng.lat().toFixed(6), e.latLng.lng().toFixed(6)) ;
+                   // map.panTo(k); 
+                    //map.setZoom(15);
+                    //kmarker.setPosition(k);
+                    console.log(e.latLng.lat(), e.latLng.lng());
+            }); 
+              //------------------klikze---------------------------
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
 
 				function refreshCaptcha(){
 				$.ajax({
